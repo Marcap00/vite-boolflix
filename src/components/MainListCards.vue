@@ -20,7 +20,7 @@ export default {
 
 <template>
     <div class="row">
-        <CardsItem />
+        <CardsItem v-for="movie in store.movies" :movie="movie" />
     </div>
 </template>
 

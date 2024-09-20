@@ -7,15 +7,15 @@ export default {
             store
         }
     },
-    components: {
-
+    props: {
+        movie: Object
     }
 };
 </script>
 
 <template>
-    <div class="col" v-for="movie in store.movies" :key="movie.id">
-        <div v-if="movie.poster_path" class="card">
+    <div v-if="movie.poster_path" class="col" :key="movie.id">
+        <div class="card">
             <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="">
         </div>
     </div>
