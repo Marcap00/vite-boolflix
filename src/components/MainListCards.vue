@@ -5,11 +5,11 @@ import CardsItem from './ListCardsItem.vue';
 export default {
     data() {
         return {
-            urlApi: 'https://api.themoviedb.org/3/search/movie'
+            urlApi: 'https://api.themoviedb.org/3/search/movie',
+            store,
         }
     },
     components: {
-        store,
         CardsItem
     },
     methods: {
@@ -23,7 +23,7 @@ export default {
                 .then((response) => {
                     console.log(response.data.results);
                     store.movies = response.data.results;
-                    console.log('Dato memorizzato nello store:', store.movies);
+                    console.log('Array dei movies memorizzato nello store:', store.movies);
                 })
                 .catch((error) => {
                     console.log(error);
