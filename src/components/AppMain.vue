@@ -1,16 +1,37 @@
 <script>
+import ListCards from './MainListCards.vue';
 export default {
     data() {
         return {
 
         }
     },
+    components: {
+        ListCards
+    }
 };
 </script>
 
 <template>
-    <h2>Main</h2>
+
+    <main>
+        <div class="container">
+
+            <ListCards />
+
+        </div>
+    </main>
+
 
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@use '../styles/partials/variables.scss' as *;
+
+main {
+    background-color: $bg-main;
+    height: calc(100vh - 80px);
+
+
+}
+</style>
