@@ -4,7 +4,8 @@ import { store } from '../store.js';
 export default {
     data() {
         return {
-            store
+            store,
+            activeHover: false
         }
     },
     props: {
@@ -15,8 +16,16 @@ export default {
 
 <template>
     <div v-if="movie.poster_path" class="col" :key="movie.id">
-        <div class="card">
-            <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="">
+        <div @mouseenter="this.activeHover = true" @mouseleave="this.activeHover = false" class="card">
+            <img v-if="!this.activeHover" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+                :alt="movie.title">
+            <ul v-if="this.activeHover">
+                <li><b>Titolo: </b> {{ movie.title }}</li>
+                <li><b>Titolo originale: </b> {{ movie.original_title }}</li>
+                <li><b>Lingua: </b> {{ movie.original_language }}</li>
+                <li><b>Voto: </b> {{ movie.vote_average.toFixed(1) }}</li>
+                <li><b>Overview: </b> {{ movie.overview }}</li>
+            </ul>
         </div>
     </div>
 </template>
@@ -26,12 +35,18 @@ export default {
     flex-shrink: 0;
 
     .card {
+        height: 450px;
+        width: 300px;
         background-color: #000;
         border: 1px solid #fff;
+        color: white;
 
-        img {
+        ul {
+            padding: 1rem;
 
-            height: 450px;
+            li {
+                margin-bottom: 3px;
+            }
         }
     }
 }

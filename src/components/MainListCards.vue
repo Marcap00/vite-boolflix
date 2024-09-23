@@ -2,6 +2,7 @@
 import { store } from '../store.js';
 
 import CardsItem from './ListCardsItem.vue';
+
 export default {
     data() {
         return {
