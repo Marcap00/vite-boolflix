@@ -10,17 +10,15 @@ export default {
             store
         }
     },
-    /* computed: {
-        storeInputUser() {
-            return store.inputUser = this.inputUser;
-        }
-    }, */
+    computed: {
+
+    },
     methods: {
         getMovies() {
             axios.get(this.urlApi, {
                 params: {
                     api_key: "df92fe028bcac745150cea6e094cf605",
-                    query: /* 'ritorno al futuro' */ store.inputUser
+                    query: store.inputUser,
                 }
             })
                 .then((response) => {
@@ -46,7 +44,7 @@ export default {
         }
     },
     updated() {
-        console.log('Input user:', this.inputUser);
+
     },
 
 
