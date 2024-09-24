@@ -1,12 +1,14 @@
 <script>
-import { store } from '../store.js';
+
 
 export default {
     data() {
         return {
-            store,
             activeHover: false
         }
+    },
+    methods: {
+
     },
     props: {
         movie: Object
@@ -15,16 +17,30 @@ export default {
 </script>
 
 <template>
-    <div v-if="movie.poster_path" class="col" :key="movie.id">
-        <div @mouseenter="this.activeHover = true" @mouseleave="this.activeHover = false" class="card">
+    <!-- Col -->
+    <div class="col" v-if="movie.poster_path">
+        <!-- Card -->
+        <div class="card" @mouseenter="this.activeHover = true" @mouseleave="this.activeHover = false">
+            <!-- Image Movie Card -->
             <img v-if="!this.activeHover" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
                 :alt="movie.title">
+            <!-- Description Movie -->
             <ul v-if="this.activeHover">
-                <li><b>Titolo: </b> {{ movie.title }}</li>
-                <li><b>Titolo originale: </b> {{ movie.original_title }}</li>
-                <li><b>Lingua: </b> {{ movie.original_language }}</li>
-                <li><b>Voto: </b> {{ movie.vote_average.toFixed(1) }}</li>
-                <li><b>Overview: </b> {{ movie.overview }}</li>
+                <li>
+                    <b>Titolo: </b> {{ movie.title }}
+                </li>
+                <li>
+                    <b>Titolo originale: </b> {{ movie.original_title }}
+                </li>
+                <li>
+                    <b>Lingua: </b> {{ movie.original_language }}
+                </li>
+                <li>
+                    <b>Voto: </b> {{ movie.vote_average.toFixed(1) }}
+                </li>
+                <li>
+                    <b>Overview: </b> {{ movie.overview }}
+                </li>
             </ul>
         </div>
     </div>
@@ -46,6 +62,7 @@ export default {
 
             li {
                 margin-bottom: 3px;
+
             }
         }
     }
