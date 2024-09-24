@@ -11,6 +11,9 @@ export default {
                     href: '#',
                     getPage() {
                         store.getPopularMovies();
+                        store.searched = false;
+                        store.onlyMovies = false;
+                        store.onlyTv = false;
                     }
                 },
                 {
@@ -18,6 +21,9 @@ export default {
                     href: '#',
                     getPage() {
                         store.getPopularTv();
+                        store.searched = false;
+                        store.onlyMovies = false;
+                        store.onlyTv = true;
                     }
                 },
                 {
@@ -25,6 +31,9 @@ export default {
                     href: '#',
                     getPage() {
                         store.getPopularMovies();
+                        store.searched = false;
+                        store.onlyMovies = true;
+                        store.onlyTv = false;
                     }
                 },
                 { text: 'Original', href: '#' },
@@ -47,6 +56,7 @@ export default {
         emitInputUser(inputUser) {
             this.$emit('input-user', inputUser);
             console.log('Input emesso:', inputUser);
+            store.searched = true;
         }
     },
     updated() {

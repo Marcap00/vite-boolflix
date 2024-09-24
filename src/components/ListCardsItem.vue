@@ -8,9 +8,6 @@ export default {
         }
     },
     methods: {
-        formatData() {
-
-        }
 
     },
     props: {
