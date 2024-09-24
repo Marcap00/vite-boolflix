@@ -80,11 +80,12 @@ export default {
     flex-shrink: 0;
 
     .card {
-        height: 450px;
+        height: 440px;
         width: 300px;
         background-color: #000;
         border: 1px solid #fff;
         color: white;
+        overflow-y: scroll;
 
         ul {
             padding: 1rem;
