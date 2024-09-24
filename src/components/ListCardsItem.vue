@@ -39,6 +39,9 @@ export default {
                     <b>Titolo originale: </b> {{ movie.original_name }}
                 </li> -->
                 <li>
+                    <b>Tipo: </b> {{ movie.media_type }}
+                </li>
+                <li>
                     <b>Lingua: </b> {{ movie.original_language }}
                 </li>
                 <li>
