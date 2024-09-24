@@ -29,5 +29,6 @@ export default {
 .row {
     display: flex;
     gap: 2rem;
+    overflow-x: scroll;
 }
 </style>
