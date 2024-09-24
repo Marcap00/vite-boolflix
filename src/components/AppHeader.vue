@@ -1,15 +1,32 @@
 <script>
-
-
-
+import { store } from '../store';
 
 export default {
     data() {
         return {
+            store,
             linksHeader: [
-                { text: 'Home', href: '#' },
-                { text: 'Serie TV', href: '#' },
-                { text: 'Film', href: '#' },
+                {
+                    text: 'Home',
+                    href: '#',
+                    getPage() {
+                        store.getPopularMovies();
+                    }
+                },
+                {
+                    text: 'Serie TV',
+                    href: '#',
+                    getPage() {
+                        store.getPopularTv();
+                    }
+                },
+                {
+                    text: 'Film',
+                    href: '#',
+                    getPage() {
+                        store.getPopularMovies();
+                    }
+                },
                 { text: 'Original', href: '#' },
                 { text: 'Aggiunti di recente', href: '#' },
                 { text: 'La mia lista', href: '#' },
@@ -45,7 +62,8 @@ export default {
         <div class="header-left">
             <h1>BOOLFLIX</h1>
             <ul>
-                <li v-for="(link, index) in linksHeader"> <a :href="link.href">{{ link.text }}</a></li>
+                <li v-for="(link, index) in linksHeader" :key="index"> <a @click="link.getPage()" :href="link.href">{{
+                    link.text }}</a></li>
             </ul>
         </div>
         <div class="header-right">
@@ -69,15 +87,17 @@ export default {
 </template>
 
 <style lang="scss">
+@use '../styles/partials/variables' as *;
+
 header {
-    height: 80px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     padding: 1rem;
 
-    background-color: #000;
+    background-color: $bg-main;
 
     .header-left {
         display: flex;
@@ -86,7 +106,7 @@ header {
 
         h1 {
             color: red;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         ul {

@@ -8,14 +8,15 @@ export default {
     data() {
         return {
             store,
-            urlApi: 'https://api.themoviedb.org/3/movie/popular',
+            /* urlApi: 'https://api.themoviedb.org/3/movie/popular', */
         }
     },
     components: {
         CardsItem
     },
+
     methods: {
-        getPopularMovies() {
+        /* getPopularMovies() {
             axios.get(this.urlApi, {
                 params: {
                     api_key: "df92fe028bcac745150cea6e094cf605",
@@ -33,10 +34,10 @@ export default {
                 .finally(() => {
                     console.log('========Chiamata Api effettuata======');
                 });
-        },
+        }, */
     },
     created() {
-        this.getPopularMovies();
+        store.getPopularMovies();
     }
 
 };
