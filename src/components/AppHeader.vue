@@ -5,10 +5,14 @@ export default {
     data() {
         return {
             store,
+            inputUser: '',
+            isShown: false,
+            activeLink: 0,
             linksHeader: [
                 {
                     text: 'Home',
                     href: '#',
+                    active: true,
                     getPage() {
                         store.getPopularMovies();
                         store.searched = false;
@@ -19,6 +23,7 @@ export default {
                 {
                     text: 'Serie TV',
                     href: '#',
+                    active: false,
                     getPage() {
                         store.getPopularTv();
                         store.searched = false;
@@ -29,6 +34,7 @@ export default {
                 {
                     text: 'Film',
                     href: '#',
+                    active: false,
                     getPage() {
                         store.getPopularMovies();
                         store.searched = false;
@@ -40,15 +46,17 @@ export default {
                 { text: 'Aggiunti di recente', href: '#' },
                 { text: 'La mia lista', href: '#' },
             ],
-
-            inputUser: '',
-            isShown: false,
         }
     },
     computed: {
 
     },
     methods: {
+        setActiveLink(index) {
+            this.linksHeader.forEach((link, i) => {
+                link.active = i === index;
+            });
+        },
 
         showInput() {
             this.isShown = !this.isShown;
@@ -72,8 +80,9 @@ export default {
         <div class="header-left">
             <h1>BOOLFLIX</h1>
             <ul>
-                <li v-for="(link, index) in linksHeader" :key="index"> <a @click="link.getPage()" :href="link.href">{{
-                    link.text }}</a></li>
+                <li v-for="(link, index) in linksHeader" :key="index"> <a :class="{ active: link.active }"
+                        @click="link.getPage(), setActiveLink(index)" :href="link.href">{{
+                            link.text }}</a></li>
             </ul>
         </div>
         <div class="header-right">
@@ -129,6 +138,11 @@ header {
                 text-decoration: none;
                 font-size: 14px;
                 font-weight: 600;
+
+                &.active,
+                &:hover {
+                    text-shadow: 0 0 5px #fff;
+                }
             }
         }
     }
