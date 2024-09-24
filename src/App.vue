@@ -8,7 +8,7 @@ export default {
     data() {
         return {
             store,
-            urlApi: 'https://api.themoviedb.org/3/search/movie',
+            urlApi: 'https://api.themoviedb.org/3/search/multi',
         }
     },
     components: {

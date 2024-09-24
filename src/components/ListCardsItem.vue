@@ -8,6 +8,9 @@ export default {
         }
     },
     methods: {
+        formatData() {
+
+        }
 
     },
     props: {
@@ -27,11 +30,17 @@ export default {
             <!-- Description Movie -->
             <ul v-if="this.activeHover">
                 <li>
-                    <b>Titolo: </b> {{ movie.title }}
+                    <b>Titolo: </b> {{ movie.title || movie.name }}
                 </li>
+                <!-- <li v-else>
+                    <b>Titolo: </b> {{ movie.name }}
+                </li> -->
                 <li>
-                    <b>Titolo originale: </b> {{ movie.original_title }}
+                    <b>Titolo originale: </b> {{ movie.original_title || movie.original_name }}
                 </li>
+                <!-- <li v-else>
+                    <b>Titolo originale: </b> {{ movie.original_name }}
+                </li> -->
                 <li>
                     <b>Lingua: </b> {{ movie.original_language }}
                 </li>
