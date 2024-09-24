@@ -27,6 +27,9 @@ export default {
             } else if (lang === 'zh') {
                 lang = 'CN';
                 return `https://flagsapi.com/${lang}/flat/24.png`;
+            } else if (lang === 'hi') {
+                lang = 'IN';
+                return `https://flagsapi.com/${lang}/flat/24.png`;
             }
             lang = lang.toUpperCase();
             return `https://flagsapi.com/${lang}/flat/24.png`;
@@ -88,6 +91,12 @@ export default {
 
             li {
                 margin-bottom: 3px;
+                color: #949494;
+
+                b {
+                    color: #fff;
+                }
+
 
                 &.language {
                     display: flex;
